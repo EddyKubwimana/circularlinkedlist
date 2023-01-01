@@ -18,18 +18,17 @@ class  circularLinkedList:
         if self.head == None:
             self.head = new_node
             self.size = 1
-            return None
-        cur_node = self.head
-        while cur_node:
+            self.tail = self.head
+        elif self.head.next == None:
             self.size+=1
-            if cur_node.next == None:
-               cur_node.next = new_node
-               self.tail = cur_node.next
-               self.tail.next = self.head
-               break
-            cur_node = cur_node.next
-
-
+            self.tail = new_node
+            self.head.next = self.tail
+        else:
+            self.size +=1
+            self.tail.next = new_node
+            self.tail= self.tail.next
+            self.tail.next = self.head
+            
     def insert(self,value, position):
         if position == 0:
             self.size +=1
@@ -58,16 +57,7 @@ class  circularLinkedList:
                 
                 
                 break
-            cur_node = cur_node.next
-        
-            
-            
-    
-                
-                
-                
-            
-        
+            cur_node = cur_node.next 
             
     def len_list(self):
            if self.head==0:
@@ -79,11 +69,10 @@ class  circularLinkedList:
 c = circularLinkedList()
 c.append(10)
 c.append(20)
-c.insert(25,0)
-c.insert(100,0)
-c.insert(200,0)
-c.insert(3,4)
-print(c.head.next.next.next.value)
+c.append(30)
+c.append(40)
+c.append(60)
+c.insert(5,1)
 print(c.len_list())
-print(c.tail.value)
+print(c.head.next.next.value)
 

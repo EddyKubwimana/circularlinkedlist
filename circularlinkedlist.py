@@ -37,8 +37,36 @@ class  circularLinkedList:
             new_node.next = self.head
             self.head = new_node
             self.tail.next = self.head
+            return None
         cur_node = self.head
         counter = 0
+        while cur_node.next:
+            counter+=1
+            if counter == position and counter != self.size-1:
+                self.size+=1
+                new_node = Node(value)
+                next_list = cur_node.next
+                new_node.next =next_list
+                cur_node.next = new_node
+                break
+            elif counter == self.size-1:
+                self.size+=1
+                new_node = Node(value)
+                next_nodes = cur_node.next
+                cur_node = new_node
+                cur_node.next = next_nodes
+                
+                
+                break
+            cur_node = cur_node.next
+        
+            
+            
+    
+                
+                
+                
+            
         
             
     def len_list(self):
@@ -54,6 +82,8 @@ c.append(20)
 c.insert(25,0)
 c.insert(100,0)
 c.insert(200,0)
+c.insert(3,4)
 print(c.head.next.next.next.value)
 print(c.len_list())
+print(c.tail.value)
 

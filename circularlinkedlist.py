@@ -57,12 +57,43 @@ class  circularLinkedList:
                 
                 
                 break
-            cur_node = cur_node.next 
+            cur_node = cur_node.next
             
     def len_list(self):
            if self.head==0:
                return 0
            return self.size
+
+    def print_list(self):
+        number = []
+        cur_node = self.head
+        counter = 0
+        while cur_node:
+            counter+= 1
+            if self.size>=counter:
+               number.append(cur_node.value)
+            else:
+               print(number)
+               break
+            cur_node = cur_node.next
+    def __add__(self, other):
+        if self.size == other.size:
+            number = []
+            cur_node = self.head
+            s_node = other.head
+            counter = 0
+            while cur_node :
+                counter+= 1
+                if self.size>=counter:
+                   number.append(cur_node.value+s_node.value)
+                else:
+                   return number
+                cur_node = cur_node.next
+                s_node = s_node.next
+        else:
+            raise IndexError('the two list do not have the same lenght')
+                
+        
 
 
 
@@ -73,6 +104,18 @@ c.append(30)
 c.append(40)
 c.append(60)
 c.insert(5,1)
+c.insert(11,0)
+
+v = circularLinkedList()
+v.append(10)
+v.append(20)
+v.append(30)
+v.append(40)
+v.append(60)
+v.insert(5,1)
+v.insert(11,0)
 print(c.len_list())
 print(c.head.next.next.value)
+c.print_list()
+print(c+v)
 

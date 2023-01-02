@@ -64,7 +64,7 @@ class  circularLinkedList:
                return 0
            return self.size
 
-    def print_list(self):
+    def __str__(self):
         number = []
         cur_node = self.head
         counter = 0
@@ -73,8 +73,7 @@ class  circularLinkedList:
             if self.size>=counter:
                number.append(cur_node.value)
             else:
-               print(number)
-               break
+               return f"{number}"
             cur_node = cur_node.next
     def __add__(self, other):
         if self.size == other.size:
@@ -116,6 +115,8 @@ v.insert(5,1)
 v.insert(11,0)
 print(c.len_list())
 print(c.head.next.next.value)
-c.print_list()
+print(c)
+print(v)
 print(c+v)
+
 

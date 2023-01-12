@@ -30,6 +30,7 @@ class  circularLinkedList:
             self.tail.next = self.head
             
     def insert(self,value, position):
+        '''insert a node at a given positio. The first argument is the value you insert, the second position the position'''
         if position == 0:
             self.size +=1
             new_node = Node(value)
@@ -57,14 +58,10 @@ class  circularLinkedList:
                 
                 
                 break
-            cur_node = cur_node.next
-            
-    def len_list(self):
-           if self.head==0:
-               return 0
-           return self.size
+            cur_node = cur_node.next      
 
     def __str__(self):
+        '''print the the linkedlist object'''
         number = []
         cur_node = self.head
         counter = 0
@@ -76,6 +73,7 @@ class  circularLinkedList:
                return f"{number}"
             cur_node = cur_node.next
     def __add__(self, other):
+        ''' add the linked list object'''
         if self.size == other.size:
             number = []
             cur_node = self.head
@@ -91,32 +89,43 @@ class  circularLinkedList:
                 s_node = s_node.next
         else:
             raise IndexError('the two list do not have the same lenght')
-                
+    @property
+    def reverse(self):
+        '''reverse the circular linkedlist'''
+        if self.head  is None:
+            raise KeyError('The list is empty')
+        prev = None
+        cur_node = self.head
+        cur_tail = self.tail
+        while cur_node is not None:
+            next_nodes = cur_node.next
+            cur_node.next = prev
+            prev= cur_node
+            cur_node = next_nodes
+        self.head = prev.next
+        self.tail = prev
+
+        
+              
         
 
+chain = circularLinkedList()
+chain.append(10)
+chain.append(20)
+chain.append(30)
+chain.append(50)
+chain.append(70)
+chain.append(80)
+chain.append(70)
+print(chain)
+chain.reverse()
+print(chain)
 
 
-c = circularLinkedList()
-c.append(10)
-c.append(20)
-c.append(30)
-c.append(40)
-c.append(60)
-c.insert(5,1)
-c.insert(11,0)
 
-v = circularLinkedList()
-v.append(10)
-v.append(20)
-v.append(30)
-v.append(40)
-v.append(60)
-v.insert(5,1)
-v.insert(11,0)
-print(c.len_list())
-print(c.head.next.next.value)
-print(c)
-print(v)
-print(c+v)
+
+
+
+
 
 

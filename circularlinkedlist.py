@@ -96,13 +96,14 @@ class  circularLinkedList:
             raise KeyError('The list is empty')
         prev = None
         cur_node = self.head
+        comp = self.size
         while cur_node is not None:
             next_nodes = cur_node.next
             cur_node.next = prev
             prev= cur_node
             cur_node = next_nodes
         self.head = prev.next
-        self.tail = prev
+        
 
         
               
@@ -118,7 +119,7 @@ chain.append(80)
 chain.append(70)
 print(chain)
 chain.reverse
-print(chain)
+print(chain.tail.value)
 
 
 
